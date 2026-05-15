@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  triton:
+    image: nvcr.io/nvidia/tritonserver:23.12-py3
+    ports:
+      - "8000:8000" # HTTP
+      - "8001:8001" # gRPC
+      - "8002:8002" # Metrics
+    volumes:
+      - ./model_repository:/models
+    # We enable polling so Triton automatically detects our Phase 7 version updates
+    command: tritonserver --model-repository=/models --model-control-mode=poll --repository-poll-secs=5
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/v2/health/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s

@@ -1,0 +1,34 @@
+# === SECURE / SENSITIVE FILES ===
+.env
+*.pem
+*.key
+secrets.json
+auth_token.txt
+
+# === LARGE BINARY FILES (MODELS) ===
+# We usually ignore .pt and .onnx in git to keep the repo small
+# In a professional setting, these would be in DVC or S3
+*.onnx
+*.pt
+*.engine
+
+# === PYTHON & OS ===
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+.DS_Store
+Thumbs.db
+
+# === DOCKER / TRITON ===
+# If you have local logs or temporary data
+logs/
+.docker-temp/
+
+# === PROJECT SPECIFIC ===
+# Do NOT ignore benchmark.csv since it's an evaluation requirement
+# But you may want to ignore other local test results
+temp_configs/
