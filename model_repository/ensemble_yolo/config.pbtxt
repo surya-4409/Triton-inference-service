@@ -12,7 +12,7 @@ ensemble_scheduling {
       output_map { key: "processed_image", value: "preprocessed_tensor" }
     },
     {
-      model_name: "yolo"
+      model_name: "yolo_ensemble"
       model_version: -1
       input_map { key: "images", value: "preprocessed_tensor" }
       output_map { key: "output0", value: "yolo_raw_tensor" }

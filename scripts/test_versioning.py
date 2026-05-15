@@ -14,7 +14,7 @@ data = json.dumps(payload).encode('utf-8')
 print("Sending Inference Requests to Multiple Model Versions...")
 
 for version in [1, 2]:
-    url = f"http://localhost:8000/v2/models/yolo/versions/{version}/infer"
+    url = f"http://localhost:8000/v2/models/yolo_ensemble/versions/{version}/infer"
     req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
     try:
         res = urllib.request.urlopen(req)
