@@ -1,26 +1,7 @@
 name: "yolo"
 backend: "onnxruntime"
 max_batch_size: 32
-
-input [
-  {
-    name: "images"
-    data_type: TYPE_FP32
-    dims: [ 3, 640, 640 ]
-  }
-]
-
-output [
-  {
-    name: "output0"
-    data_type: TYPE_FP32
-    dims: [ 84, -1 ]
-  }
-]
-
-dynamic_batching {
-  preferred_batch_size: [8, 16, 32]
-  max_queue_delay_microseconds: 100
-}
-
+input [ { name: "images", data_type: TYPE_FP32, dims: [ 3, 640, 640 ] } ]
+output [ { name: "output0", data_type: TYPE_FP32, dims: [ 84, -1 ] } ]
+dynamic_batching { preferred_batch_size: [8, 16, 32], max_queue_delay_microseconds: 100 }
 version_policy: { all: {} }
